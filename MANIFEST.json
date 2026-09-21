@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "name": "gaming-engineer-kb",
+  "generated_at": "2026-09-21",
+  "purpose": "Shared knowledge library for 3D model creation, 3D world creation, and 3D animation, consumed by Seele (Blender bridge), Hermes workers (kanban tasks), and opencode.",
+  "consumption": [
+    "Locate topic by tag, load core doc, apply numbered pipeline, respect QA gates, use data/*.json presets verbatim."
+  ],
+  "topics": [
+    {
+      "id": "model-creation",
+      "title": "3D Model Creation",
+      "doc": "core/01-model-creation.md",
+      "tags": ["mesh-gen", "retopology", "uv", "pbr-bake", "lod", "qa"],
+      "summary": "AI mesh generation to game-ready asset: cleanup, retopology, UV, PBR rebake, LOD chain, QA gates."
+    },
+    {
+      "id": "world-creation",
+      "title": "3D World Creation",
+      "doc": "core/02-world-creation.md",
+      "tags": ["streaming", "world-partition", "terrain", "scattering", "modular", "impostors", "floating-origin"],
+      "summary": "Tile-based world management, cell streaming with hysteresis, terrain heightmap/GPU pipelines, deterministic scattering, modular kit rules."
+    },
+    {
+      "id": "animation",
+      "title": "3D Model Animation",
+      "doc": "core/03-animation.md",
+      "tags": ["rigging", "skinning", "lbs", "morph-targets", "blend-shapes", "retargeting", "state-machines"],
+      "summary": "Skeleton conventions, LBS math, 4-influence rule, bind-pose discipline, morph target memory, facial layering, retargeting, glTF animation export."
+    },
+    {
+      "id": "pbr-materials",
+      "title": "PBR Materials",
+      "doc": "core/04-pbr-materials.md",
+      "tags": ["pbr", "metallic-roughness", "textures", "texel-density", "node-graph"],
+      "summary": "Metallic-roughness map specs, sRGB vs linear, full material presets incl. Seele styles, UV density rules."
+    },
+    {
+      "id": "gltf-pipeline",
+      "title": "glTF/GLB Pipeline",
+      "doc": "core/05-gltf-pipeline.md",
+      "tags": ["gltf", "glb", "draco", "ktx2", "compression", "validation"],
+      "summary": "Draco + KTX2 parameters, gltf-transform batch ops, engine support matrix, Blender export settings, validation gates."
+    },
+    {
+      "id": "blender-headless",
+      "title": "Blender Headless Operations",
+      "doc": "core/06-blender-headless-ops.md",
+      "tags": ["blender", "bpy", "batch", "seele", "determinism", "automation"],
+      "summary": "Headless bpy patterns, Seele bridge reuse, batch LOD/material generation, seed determinism, error handling."
+    },
+    {
+      "id": "optimization",
+      "title": "Optimization Budgets",
+      "doc": "core/07-optimization-budgets.md",
+      "tags": ["lod", "triangles", "draw-calls", "textures", "memory"],
+      "summary": "Numeric budgets per asset tier, world block, and platform."
+    }
+  ],
+  "workflows": [
+    { "id": "character-pipeline", "doc": "workflows/character-pipeline.md", "applies_to": "all remake characters" },
+    { "id": "world-block-pipeline", "doc": "workflows/world-block-pipeline.md", "applies_to": "all remake worlds" },
+    { "id": "asset-ingestion", "doc": "workflows/asset-ingestion.md", "applies_to": "worldbuild_manifest + repo consolidation" }
+  ],
+  "engine": {
+    "doc": "engine/twilight-engine-integration.md",
+    "note": "Maps KB rules onto Twilight engine stubs (asset/frame_graph/shader) and blender_asset_loader."
+  },
+  "data_files": {
+    "material-presets": "data/material-presets.json",
+    "lod-budget-tiers": "data/lod-budget-tiers.json",
+    "world-block-sizes": "data/world-block-sizes.json",
+    "animation-clip-presets": "data/animation-clip-presets.json",
+    "gltf-export-settings": "data/gltf-export-settings.json",
+    "compression-matrix": "data/compression-matrix.json"
+  },
+  "binding_rules": [
+    "1 Blender unit = 1 meter; apply transforms before export",
+    "GLB + Draco + KTX2 for runtime delivery; uncompressed sources in version control",
+    "Every generative batch uses an explicit seed",
+    "Engine code changes land in twilight-elysium first, then vendor outward"
+  ]
+}

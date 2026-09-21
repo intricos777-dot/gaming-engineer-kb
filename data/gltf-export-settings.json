@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "canonical": {
+    "format": "glb",
+    "apply_modifiers": true,
+    "uvs": true,
+    "normals": true,
+    "tangents": false,
+    "vertex_colors": false,
+    "draco": true,
+    "draco_level": 6,
+    "quantize_position": 12,
+    "quantize_normal": 8,
+    "quantize_texcoord": 10,
+    "image_format": "AUTO",
+    "y_up": true,
+    "rest_pose_armature": true,
+    "deformation_bones_only": true,
+    "leaf_bones": false,
+    "shape_keys": true,
+    "custom_properties": true
+  },
+  "coordinate": {
+    "scale": "1 Blender unit = 1 meter",
+    "apply_transforms": true,
+    "convention": "+Y up (glTF standard)"
+  },
+  "engine_specific": {
+    "unity_gltfast": {
+      "draco": "add com.atteneder.draco package",
+      "ktx2": "add KTX for Unity; test per build target",
+      "note": "avoid WebP without custom addon"
+    },
+    "unreal_5": {
+      "draco": "stripped/re-encoded by Interchange",
+      "ktx2": "strip; use none",
+      "note": "run dedup/prune/flatten; generate LODs post-import"
+    },
+    "godot_4": {
+      "draco": "NOT supported at runtime",
+      "ktx2": "supported",
+      "note": "skip Draco in dependencies; KTX2 only"
+    },
+    "three_js": {
+      "draco": "requires DRACOLoader",
+      "ktx2": "supported"
+    },
+    "twilight_engine": {
+      "note": "loader decides; record decisions in engine/twilight-engine-integration.md",
+      "meshopt": "unavailable (libbf_intern_meshopt_bridge.so missing) — do not depend on EXT_meshopt_compression"
+    }
+  }
+}

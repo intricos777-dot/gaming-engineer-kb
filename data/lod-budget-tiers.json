@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "tiers": {
+    "hero_character": {
+      "lod0": 60000,
+      "lod1": 30000,
+      "lod2": 15000,
+      "lod3": 6000,
+      "note": "protagonist / playable / merc; LOD3 silhouette-first"
+    },
+    "hero_prop": {
+      "lod0": 15000,
+      "lod1": 7500,
+      "lod2": 3750,
+      "lod3": 1500,
+      "note": "signature weapon, key item"
+    },
+    "support_prop": {
+      "lod0": 5000,
+      "lod1": 2500,
+      "lod2": 1200,
+      "lod3": 500
+    },
+    "world_block": {
+      "lod0": 15000,
+      "lod1": 7000,
+      "lod2": 3500,
+      "lod3": "impostor",
+      "note": "per modular kit piece, kit = 1 material set"
+    },
+    "background_foliage": {
+      "lod0": 1000,
+      "lod1": "billboard",
+      "lod2": "impostor",
+      "lod3": "impostor"
+    }
+  },
+  "delivery_sizes_mb": {
+    "character": 10,
+    "prop": 5,
+    "world_block": 20
+  },
+  "draw_call_budget": {
+    "desktop_per_view": 2000,
+    "mobile_per_view": 1000,
+    "instancing": "mandatory for scatter"
+  }
+}

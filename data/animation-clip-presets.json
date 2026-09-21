@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "sample_fps": 30,
+  "clip_schema": {
+    "locomotion": ["idle", "walk", "run", "sprint"],
+    "transitions": ["jump_start", "jump_air", "jump_land", "land_hard"],
+    "combat": ["attack_sword_1", "attack_sword_2", "attack_heavy", "block", "dodge", "hurt_light", "hurt_heavy"],
+    "misc": ["interact", "aim", "reload", "death", "death_variant"],
+    "face": ["blink", "blink_l", "smile", "frown", "mouth_open", "mouth_pucker", "brow_raise", "brow_furrow", "squint"]
+  },
+  "rules": {
+    "loop_flag": "carried in metadata; locomotion loops, combat often non-loop",
+    "root_motion": "locomotion: keep; attacks: extract unless body travel needed",
+    "retargeting": "semantic name mapping; save profile per skeleton signature",
+    "blend_trees": "locomotion by direction + speed",
+    "morph_memory_guard": "sparse accessors; only active targets GPU-resident (50 targets x 50k verts ~= 30 MB face raw)"
+  },
+  "validation_poses": ["T_pose", "arm_raise_90", "full_crouch", "wrist_twist", "foot_plant_stance"]
+}

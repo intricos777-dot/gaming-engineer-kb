@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "cell_sizes_m": {
+    "terrain": 1000,
+    "detail": 500,
+    "props": 250
+  },
+  "streaming": {
+    "hysteresis": "unload radius = load radius + band; prevents flicker",
+    "priority_order": ["ground", "detail", "props"],
+    "preload_spawn": true,
+    "floating_origin": true,
+    "note": "rebase local origin as player moves; large worlds > 16 km"
+  },
+  "block_lattice": {
+    "unit": 4.0,
+    "lattice_type": "grid, fixed spacing",
+    "seam_rule": "seams hidden by design",
+    "kit_material_set": 1
+  },
+  "terrain": {
+    "heightmap_stamps": "authored ground",
+    "fbm_octrees": "runtime/vast terrain, overhangs, caves",
+    "texturing": "height-blended bands + triplanar + stochastic shading",
+    "lod": "real-time, near-high/far-coarse"
+  },
+  "scattering": {
+    "deterministic_seed": true,
+    "variation": ["scale", "rotation", "color"],
+    "density_fadeout": true,
+    "impostors_at_distance": true
+  },
+  "flavor_kits": {
+    "cyber": { "kits": ["plaza", "tower", "transit"], "games": ["black-ops-2-elysium", "tf2-elysium"] },
+    "mythic": { "kits": ["ruin", "sanctum", "chimeric"], "games": ["twilight-elysium", "kingdom-hearts-zero", "loz-ocarina-mq"] },
+    "dystopic": { "kits": ["industrial", "city", "mesa"], "games": ["half-life-elysium", "half-life-2-elysium", "The-Elder-Scrolls-Elsewhyr", "The-Elder-Scrolls-Elsweyr"] },
+    "organic": { "kits": ["terrain-living", "bio-structure", "grove"], "games": ["ringworld-redux", "te-bonfire", "te-halo-inspired"] }
+  }
+}
